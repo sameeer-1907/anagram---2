@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram Solver</title>
+    <style>
+        #anagramInput {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .dark {
+            background-color: rgb(108, 108, 195);
+        }
+
+        .red {
+            background-color: #FF5733;
+        }
+
+        .none {
+            background-color: transparent;
+        }
+
+        body {
+            margin: 0; /* Remove default body margin */
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('./images/bg.png');
+            background-size: cover; 
+        }
+
+        body {
+            background-image: url('./images/bg.png');
+            background-size: auto;
+            background-repeat: repeat;
+            background-position: center center;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin:20px;
+        }
+
+        button{
+            border:1px solid black;
+            font-size: larger;
+            background-color: antiquewhite;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Anagram Solver</h1>
+    <h2> fthet </h2>
+
+    <label for="anagramInput">Enter jumbled letters:</label>
+    <input type="text" id="anagramInput" placeholder="Type jumbled letters">
+
+    <button onclick="solveAnagram()">Submit</button>
+
+    <div id="result"></div>
+
+    <script>
+        const correctWords = ["theft"]; // Add your list of correct words
+
+        function solveAnagram() {
+            const input = document.getElementById("anagramInput").value.toLowerCase();
+            const foundWord = correctWords.find(word => isAnagram(input, word));
+
+            if (foundWord) {
+                document.getElementById("result").innerText = "Your clue letter word is: N " ;
+            } else {
+                document.getElementById("result").innerText = "incorrect !!!";
+            }
+        }
+
+        function isAnagram(str1, str2) {
+            return str1.split("").sort().join("") === str2.split("").sort().join("");
+        }
+    </script>
+
+</body>
+</html>
